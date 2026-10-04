@@ -1,9 +1,8 @@
-# SolarRic
+# Solarik
 
-Landing test cho sales điện mặt trời mái nhà. Không phải tư vấn pháp lý.
+Trang công cụ lọc cuộc chào. Không form, không ô đối tác.
 
-## Bật GitHub Pages
-Settings → Pages → Branch `main` / root → Save.
-Site sẽ ở https://patridupro.github.io/solarric/
+Bật GitHub Pages: Settings → Pages → branch main / root.
+https://patridupro.github.io/solarric/
 
-Chưa gắn form về Zalo. Trước khi chạy ads, thay form tĩnh bằng Google Form hoặc Zalo.
+Danh mục nạp nội dung: NAP.md

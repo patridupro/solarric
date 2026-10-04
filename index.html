@@ -3,116 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SolarRic — 10 câu khách hay hỏi sales điện mặt trời</title>
-  <meta name="description" content="SolarRic giúp sales điện mặt trời trả lời đúng điều khoản khi khách hỏi bán điện dư, thông báo hay xin phép, PCCC, zero-export, DPPA. Không phải bản photo nghị định." />
+  <title>Solarik — công cụ lọc cuộc chào điện mặt trời</title>
+  <meta name="description" content="Solarik là công cụ cho sales điện mặt trời: lọc đường đi, kiểm công thức, dẫn điều khoản, gắn biểu mẫu chào. Không môi giới, không thu lead." />
   <style>
-    :root { --ink:#1c1916; --paper:#f4efe6; --card:#fbf7f1; --line:#e2d9cc; --amber:#9a6232; --amber-soft:#f3e6d4; --muted:#6f675e; --ok:#2f6b4f; }
+    :root { --ink:#1c1916; --paper:#f3eee6; --card:#fbf7f1; --line:#e3d9cc; --amber:#9a6232; --muted:#6e665d; }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body { font-family: Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.5; }
-    a { color: inherit; }
-    .wrap { max-width: 880px; margin: 0 auto; padding: 28px 20px 72px; }
-    header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
-    .mark { font-variant: small-caps; letter-spacing: 0.14em; font-size: 14px; }
+    body { margin: 0; font-family: Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.5; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 80px; }
+    header { display: flex; justify-content: space-between; align-items: baseline; }
+    .mark { font-variant: small-caps; letter-spacing: .14em; font-size: 14px; }
     .mark span { color: var(--amber); }
     .note { font-family: "Segoe UI", sans-serif; font-size: 12px; color: var(--muted); }
-    h1 { font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.08; margin: 36px 0 16px; }
+    h1 { font-weight: 500; font-size: clamp(32px, 5vw, 50px); line-height: 1.08; margin: 34px 0 14px; }
     .lead { font-size: 18px; max-width: 640px; }
-    .row { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 8px; }
-    .btn, button.btn { font-family: "Segoe UI", sans-serif; background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 12px 18px; font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; }
-    .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
-    .meta { font-family: "Segoe UI", sans-serif; font-size: 13px; color: var(--muted); margin-top: 14px; }
-    section { margin-top: 48px; }
-    h2 { font-size: 26px; font-weight: 500; margin: 0 0 8px; }
-    .sub { color: var(--muted); margin: 0 0 18px; font-family: "Segoe UI", sans-serif; font-size: 14px; }
-    ol.qs { list-style: none; padding: 0; margin: 0; }
-    ol.qs li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; display: grid; grid-template-columns: 42px 1fr; gap: 8px; }
-    .n { font-family: "Segoe UI", sans-serif; color: var(--amber); font-size: 13px; padding-top: 3px; }
-    .q { font-size: 17px; }
-    .tag { font-family: "Segoe UI", sans-serif; font-size: 12px; color: var(--muted); display: block; margin-top: 4px; }
-    .open { background: var(--amber-soft); border-color: #e4d0b4; }
-    form { background: var(--ink); color: var(--paper); border-radius: 18px; padding: 22px; display: grid; gap: 10px; }
-    form h2 { color: var(--paper); }
-    label { font-family: "Segoe UI", sans-serif; font-size: 12px; color: #d9d0c4; }
-    input, select { font: 16px "Segoe UI", sans-serif; padding: 12px; border-radius: 10px; border: 1px solid #3a342c; background: #2a261f; color: var(--paper); width: 100%; }
-    form .btn { background: #e7c49a; color: var(--ink); justify-self: start; }
-    .fine { font-family: "Segoe UI", sans-serif; font-size: 12px; color: #b7aea2; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-    .card { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--card); }
-    .card strong { display: block; margin-bottom: 6px; }
-    footer { margin-top: 42px; font-family: "Segoe UI", sans-serif; font-size: 12px; color: var(--muted); }
-    #thanks { display: none; background: #e7f0ea; border: 1px solid #c9dfd2; color: var(--ok); border-radius: 12px; padding: 12px 14px; }
+    .meta { font-family: "Segoe UI", sans-serif; font-size: 13px; color: var(--muted); }
+    section { margin-top: 42px; }
+    h2 { font-size: 24px; font-weight: 500; margin: 0 0 8px; }
+    .sub { font-family: "Segoe UI", sans-serif; font-size: 14px; color: var(--muted); margin: 0 0 14px; }
+    ol, ul { margin: 0; padding: 0; list-style: none; }
+    li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; }
+    .k { font-family: "Segoe UI", sans-serif; font-size: 12px; color: var(--amber); display: block; margin-bottom: 2px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 680px) { .grid { grid-template-columns: 1fr; } }
+    footer { margin-top: 36px; font-family: "Segoe UI", sans-serif; font-size: 12px; color: var(--muted); }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="mark">Solar<span>Ric</span></div>
-      <div class="note">Dự án cá nhân · không phải tư vấn pháp lý</div>
+      <div class="mark">Solar<span>ik</span></div>
+      <div class="note">Công cụ · không môi giới · không tư vấn pháp lý</div>
     </header>
-    <h1>Khách không hỏi nghị định. Khách hỏi sales có chắc không.</h1>
-    <p class="lead">SolarRic là cuốn trả lời cho người đang chào điện mặt trời mái nhà. Mỗi câu kèm điều khoản và link văn bản gốc trên vbpl.vn, để sales dẫn được ngay trong cuộc gặp — không photo cả nghị định.</p>
-    <div class="row">
-      <a class="btn" href="#nhan">Nhận 3 câu mẫu</a>
-      <a class="btn ghost" href="#muoi">Xem 10 câu khách hay hỏi</a>
-    </div>
-    <p class="meta">Test tháng 10 · track đầu là mái nhà tự dùng. DPPA và BESS mở sau khi track này có người trả.</p>
-    <section id="muoi">
-      <h2>10 câu đang bị hỏi nhiều nhất</h2>
-      <p class="sub">Lấy từ video thủ tục mái nhà, FAQ nghị định 243, và phản ánh KCN / PCCC — không lấy từ danh mục văn bản.</p>
-      <ol class="qs">
-        <li class="open"><span class="n">01</span><div><span class="q">Bán điện dư được bao nhiêu phần trăm sau 26/6/2026?</span><span class="tag">Mở mẫu · trần 50%, có cửa thỏa thuận cao hơn đến hết 2030 nếu lưới nhận được</span></div></li>
-        <li class="open"><span class="n">02</span><div><span class="q">Lắp mái nhà là xin phép hay chỉ thông báo?</span><span class="tag">Mở mẫu · luật nói thông báo, địa phương vẫn hay đòi xây dựng và PCCC</span></div></li>
-        <li class="open"><span class="n">03</span><div><span class="q">Zero-export bắt buộc lúc nào?</span><span class="tag">Mở mẫu · trung áp trở lên và không bán điện dư</span></div></li>
-        <li><span class="n">04</span><div><span class="q">Hệ dưới 100 kW và dưới 1 kW inverter được miễn gì?</span><span class="tag">Khóa trong gói</span></div></li>
-        <li><span class="n">05</span><div><span class="q">Không đấu nối lưới có phải đăng ký không?</span><span class="tag">Khóa trong gói</span></div></li>
-        <li><span class="n">06</span><div><span class="q">Hộ gia đình có được bán điện dư không?</span><span class="tag">Khóa trong gói</span></div></li>
-        <li><span class="n">07</span><div><span class="q">Hệ FIT cũ có bị kéo sang giá mới không?</span><span class="tag">Khóa trong gói</span></div></li>
-        <li><span class="n">08</span><div><span class="q">Nhà trong khu công nghiệp nộp hồ sơ cho ai?</span><span class="tag">Khóa trong gói</span></div></li>
-        <li><span class="n">09</span><div><span class="q">Khách nói muốn DPPA — họ có đủ điều kiện khách lớn không?</span><span class="tag">Track sau</span></div></li>
-        <li><span class="n">10</span><div><span class="q">Gắn pin lưu trữ rồi tiền về từ đâu, ai được mua dịch vụ?</span><span class="tag">Track sau · BESS</span></div></li>
+    <h1>Sales không thuê đội kỹ thuật. Vẫn phản biện được đội kỹ thuật của mình.</h1>
+    <p class="lead">Solarik lọc một cuộc chào mái nhà thành đường được đi, câu không được hứa, công thức đối chiếu, biểu mẫu đúng việc, và điều khoản dẫn được. Đối tác EPC là của sales. Solarik không nhận khách, không lấy hoa hồng.</p>
+    <p class="meta">1,5 triệu/tháng hoặc 9 triệu/6 tháng · một người một ghế · solarik.vn</p>
+    <section>
+      <h2>Một cuộc chào đi qua năm bước</h2>
+      <p class="sub">Khép vòng trên cùng một hồ sơ. Không tải về thành file.</p>
+      <ol>
+        <li><span class="k">1 · Lọc</span>Tám ô: tỉnh, mái sở hữu hay thuê, trong hay ngoài khu công nghiệp, hạ áp hay trung áp, có bán điện dư không, phụ tải một ca hay ba ca, có hỏi DPPA không, công suất dự kiến. Ra đi tự dùng, đi DPPA, hoặc dừng.</li>
+        <li><span class="k">2 · Câu không được hứa</span>Năm câu phải hỏi trước khi cam kết sản lượng, tỷ lệ bán dư, thời gian thông báo, zero-export, tháo dỡ mái thuê.</li>
+        <li><span class="k">3 · Công thức</span>Sản lượng, hệ số hiệu suất, hoàn vốn. Sales thấy giả định nào đội kỹ thuật đang dùng lệch so với bộ đã khóa trong công cụ.</li>
+        <li><span class="k">4 · Biểu mẫu</span>Đúng mẫu khảo sát, mẫu chào, mẫu phụ lục mái thuê. Gắn vào hồ sơ cuộc này, không thành gói tải về.</li>
+        <li><span class="k">5 · Cờ tuần</span>Văn bản mới đụng hồ sơ đang mở thì ghế này nhận một dòng: câu đã chào tuần trước không còn đứng.</li>
       </ol>
     </section>
     <section>
-      <h2>Vì sao không bán bản photo vbpl</h2>
+      <h2>Vì sao không hủy sau tháng đầu</h2>
       <div class="grid">
-        <div class="card"><strong>Văn bản đã miễn phí.</strong> Sales không trả tiền để đọc lại nghị định. Họ trả để khỏi bị khách hỏi xoáy giữa cuộc chào.</div>
-        <div class="card"><strong>Một tài khoản, một người.</strong> Được dẫn điều khoản với khách của chính họ. Không gửi file, không đăng lại.</div>
+        <div><li><span class="k">Hồ sơ đang mở</span>Bộ biểu mẫu tải một lần thì hết lý do trả tháng hai. Hồ sơ chào nằm trong ghế, tuần sau bị văn bản mới đụng, thì rời đi là mất cảnh báo trên chính câu họ đã nói với khách.</li></div>
+        <div><li><span class="k">Công thức bị khóa giả định</span>Giá điện và bức xạ đổi. Bản xuất tháng trước không tự biết nó sai. Ghế đang mở thì biết.</li></div>
+        <div><li><span class="k">Pattern không xuất</span>Chỗ kẹt từ dự án đã làm chỉ hiện khi nhánh trùng. Không có trang nào để chụp cả cây.</li></div>
+        <div><li><span class="k">Một người một ghế</span>Không chia seat, không gửi file. Muốn dùng tiếp thì ghế còn sống.</li></div>
       </div>
     </section>
-    <section id="nhan">
-      <form id="lead">
-        <h2>Nhận 3 câu mẫu</h2>
-        <p class="fine">Bản test. Điền để đo có người muốn câu trả lời này không. Chưa thu tiền trên trang.</p>
-        <label for="name">Tên</label>
-        <input id="name" name="name" required placeholder="Anh/chị đang chào mái nhà" />
-        <label for="phone">Số Zalo</label>
-        <input id="phone" name="phone" required inputmode="tel" placeholder="09..." />
-        <label for="role">Anh/chị là</label>
-        <select id="role" name="role">
-          <option>Sales / cộng tác viên EPC</option>
-          <option>Chủ đội lắp đặt</option>
-          <option>Chủ nhà máy đang tự tìm hiểu</option>
-          <option>Khác</option>
-        </select>
-        <button class="btn" type="submit">Gửi — giữ chỗ 3 câu mẫu</button>
-        <p class="fine">SolarRic không phải ý kiến pháp lý, không làm việc thay với điện lực hay cơ quan nhà nước. Giá dự kiến sau test: 1,5 triệu/tháng hoặc 9 triệu/6 tháng, một người dùng.</p>
-        <div id="thanks">Đã ghi trên trình duyệt này. Trước khi chạy quảng cáo, gắn form về Zalo của anh — trang tĩnh chưa có máy chủ nhận số.</div>
-      </form>
+    <section>
+      <h2>Công cụ không làm</h2>
+      <ul>
+        <li>Không nhận số điện thoại khách của sales.</li>
+        <li>Không xếp hạng và không giới thiệu nhà thầu.</li>
+        <li>Không phải ý kiến pháp lý, không đi cửa cơ quan nhà nước.</li>
+      </ul>
     </section>
-    <footer>SolarRic · bản đồ câu hỏi cho sales điện mặt trời · nguồn văn bản: vbpl.vn · tách khỏi mọi thương hiệu EPC</footer>
+    <footer>Solarik · công cụ lọc cuộc chào cho sales điện mặt trời · nguồn điều khoản: vbpl.vn · pattern lấy từ dự án đã làm, không ghi tên nhà máy</footer>
   </div>
-  <script>
-    document.getElementById("lead").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var row = { name: document.getElementById("name").value, phone: document.getElementById("phone").value, role: document.getElementById("role").value, at: new Date().toISOString() };
-      var all = JSON.parse(localStorage.getItem("solarric-leads") || "[]");
-      all.push(row);
-      localStorage.setItem("solarric-leads", JSON.stringify(all));
-      document.getElementById("thanks").style.display = "block";
-      e.target.reset();
-    });
-  </script>
 </body>
 </html>
